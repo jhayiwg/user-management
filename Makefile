@@ -1,4 +1,5 @@
 start:
+	cp default.env .env
 	./vendor/bin/sail up -d 
 	./vendor/bin/sail artisan migrate:fresh
 	./vendor/bin/sail artisan db:seed
