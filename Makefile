@@ -7,5 +7,6 @@ start:
 	./vendor/bin/sail artisan db:seed
 	./vendor/bin/sail npm install
 	./vendor/bin/sail npm run build
+	./vendor/bin/sail artisan storage:link
 
 	@echo "Open http://localhost:8989"
