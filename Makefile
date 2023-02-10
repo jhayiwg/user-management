@@ -10,3 +10,4 @@ start:
 	./vendor/bin/sail artisan storage:link
 
 	@echo "Open http://localhost:8989"
+	open http://localhost:8989
