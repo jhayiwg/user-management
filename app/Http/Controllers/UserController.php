@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Services\Photo\Upload;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -31,9 +32,9 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt('password');
+        $user->password = Hash::make($request->password);
 
-        if($request->filled('file')) {
+        if ($request->filled('file')) {
             Upload::crop(Storage::path($request->file), $request->points);
             $user->photo_path = $request->file;
         }
@@ -45,9 +46,12 @@ class UserController extends Controller
     public function update(User $user, UpdateRequest $request)
     {
         $file = $user->photo_path ?? false;
-        if($request->filled('file')) {
+        if ($request->filled('file')) {
             Upload::crop(Storage::path($request->file), $request->points);
             $user->photo_path = $request->file;
+        }
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
         }
 
         $user->name = $request->name;

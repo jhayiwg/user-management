@@ -18,6 +18,8 @@ const UserIndex = () => ({
             name: '',
             email: '',
             photo: '',
+            password: '',
+            password_confirmation: '',
         },
         error: {},
     },
@@ -76,6 +78,8 @@ const UserIndex = () => ({
             name: '',
             email: '',
             photo: '',
+            password: '',
+            password_confirmation: '',
         };
         this.modal.show = true;
 
@@ -110,7 +114,9 @@ const UserIndex = () => ({
     async store() {
         let data = {
             name: this.modal.user.name,
-            email: this.modal.user.email
+            email: this.modal.user.email,
+            password: this.modal.user.password,
+            password_confirmation: this.modal.user.password_confirmation,
         }
         this.points
         if (
@@ -145,6 +151,8 @@ const UserIndex = () => ({
         let data = {
             name: this.modal.user.name,
             email: this.modal.user.email,
+            password: this.modal.user.password,
+            password_confirmation: this.modal.user.password_confirmation,
             _method: 'patch'
         }
 
