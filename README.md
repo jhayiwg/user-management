@@ -3,5 +3,5 @@
 
 ## How to test
 
-- `make start`.
+- From your terminal run `make start`.
 - [open](http://localhost:8989).
